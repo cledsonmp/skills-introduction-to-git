@@ -2,7 +2,6 @@ name: Automatizar boas-vindas em Issues
 on:
   issues:
     types: [opened]
-
 jobs:
   comentar:
     runs-on: ubuntu-latest
@@ -10,16 +9,16 @@ jobs:
       - name: Executar GitHub Script
         uses: actions/github-script@v6
         with:
-          script:
+          script: |-
             const repoOwner = context.repo.owner;
             const repoRepo = context.repo.repo;
             const issueNumber = context.payload.issue.number;
 
-            console.log('Interagindo com a issue #${issueNumber}');
+            console.log(`Interagindo com a issue #${issueNumber}`);
 
             await github.rest.issues.createComment({
               owner: repoOwner,
               repo: repoRepo,
               issue_number: issueNumber,
-              body: 'Olá! Obrigado por abrir uma issue. Nossa equipe irá analisar em breve !'
-            })
+              body: 'Olá! Obrigado por abrir uma issue. Nossa equipe irá analisar em breve!'
+            });
