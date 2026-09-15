@@ -5,6 +5,8 @@ on:
 jobs:
   comentar:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
     steps:
       - name: Executar GitHub Script
         uses: actions/github-script@v6
