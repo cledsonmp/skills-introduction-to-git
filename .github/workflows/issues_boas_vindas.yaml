@@ -1,1 +1,4 @@
-
+name: Automatizar boas-vindas em Issues
+on:
+  issues:
+    types: [opened]
